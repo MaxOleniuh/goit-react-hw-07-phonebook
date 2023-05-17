@@ -4,7 +4,7 @@ import Form from './Form/Form';
 import List from './List/List';
 import Filter from './Filter/Filter';
 import { create } from 'redux/slice';
-import Loader from './Loader/Loader';
+// import Loader from './Loader/Loader';
 export const App = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.toolkit.contacts);
@@ -28,7 +28,7 @@ export const App = () => {
 
     return (
       <>
-        <Loader/>
+        {/* <Loader/> */}
         <h2>Phonebook</h2>
         <Form addUser={addUser} />
         <h3>Contacts</h3>

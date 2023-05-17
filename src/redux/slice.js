@@ -3,9 +3,11 @@ const { createSlice } = require('@reduxjs/toolkit');
 export const slice = createSlice({
   name: 'toolkit',
   initialState: {
-    contacts: [
-      // { name: 'Max', number: '901-122-4421', id: 'PMGiyvcatsG-XcVJw1bAk' },
-    ],
+    contacts: {
+      items: [],
+      isLoading: false,
+      error: null,
+    },
     filter: '',
   },
   reducers: {
@@ -20,7 +22,26 @@ export const slice = createSlice({
     changeFilter(state, action) {
       state.filter = action.payload;
     },
+    fetchingInProgress(state) {
+      state.isLoading = true;
+    },
+    fetchingSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    fetchingError(state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 export default slice.reducer;
-export const { create, remove, changeFilter } = slice.actions;
+export const {
+  create,
+  remove,
+  changeFilter,
+  fetchingInProgress,
+  fetchingSuccess,
+  fetchingError,
+} = slice.actions;
