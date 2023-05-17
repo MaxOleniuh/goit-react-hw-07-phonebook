@@ -1,4 +1,5 @@
 import { UlStyled, ButtonStyled, LiStyled } from './List.styled';
+import PropTypes from 'prop-types';
 import { remove } from 'redux/slice';
 import { useDispatch } from 'react-redux';
 const List = ({contacts}) => {
@@ -13,6 +14,10 @@ const List = ({contacts}) => {
       ))}
     </UlStyled>
   );
+};
+
+List.propTypes = {
+  contacts: PropTypes.array.isRequired,
 };
 
 export default List;

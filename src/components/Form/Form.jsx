@@ -15,7 +15,7 @@ const Form = ({ addUser }) => {
 const handleSubmit = e => {
   e.preventDefault();
   const form = e.currentTarget;
-  addUser({ ...{ name, number } });
+  addUser({ name, number });
   form.reset();
   }
 

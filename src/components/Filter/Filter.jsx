@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { LabelStyled, InputStyled } from './Filter.styled';
 import { changeFilter } from 'redux/slice';
@@ -16,10 +15,6 @@ const Filter = () => {
       />
     </LabelStyled>
   );
-};
-
-Filter.propTypes = {
-  setFilterValue: PropTypes.func.isRequired,
 };
 
 export default Filter;
