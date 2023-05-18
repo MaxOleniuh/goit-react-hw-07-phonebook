@@ -1,47 +1,33 @@
+import { addContact, deleteContact, fetchContacts } from './operations';
 const { createSlice } = require('@reduxjs/toolkit');
-
-export const slice = createSlice({
-  name: 'toolkit',
-  initialState: {
-    contacts: {
-      items: [],
-      isLoading: false,
-      error: null,
-    },
-    filter: '',
+const initialState = {
+  contacts: {
+    items: [],
+    isLoading: false,
+    error: null,
   },
-  reducers: {
-    create(state, action) {
-      state.contacts.push(action.payload);
+};
+const slice = createSlice({
+  name: 'toolkit',
+  initialState,
+  extraReducers: {
+    [fetchContacts.fulfilled](state, { payload }) {
+      state.contacts.items = payload;
+      state.contacts.isLoading = false;
+      state.contacts.error = null;
     },
-    remove(state, action) {
-      state.contacts = state.contacts.filter(
-        contact => contact.id !== action.payload
+    [fetchContacts.pending](state) {
+      state.contacts.isLoading = true;
+    },
+    [addContact.fulfilled](state, { payload }) {
+      state.contacts.items.push(payload);
+    },
+    [deleteContact.fulfilled](state, { payload }) {
+      state.contacts.items = state.contacts.items.filter(
+        contact => contact.id !== payload
       );
-    },
-    changeFilter(state, action) {
-      state.filter = action.payload;
-    },
-    fetchingInProgress(state) {
-      state.isLoading = true;
-    },
-    fetchingSuccess(state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
-    },
-    fetchingError(state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
     },
   },
 });
 export default slice.reducer;
-export const {
-  create,
-  remove,
-  changeFilter,
-  fetchingInProgress,
-  fetchingSuccess,
-  fetchingError,
-} = slice.actions;
+export const { changeFilter } = slice.actions;

@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import slice from './slice';
+import filterSlice from './filterSlice';
 import {
   persistStore,
   persistReducer,
@@ -15,13 +16,12 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'toolkit',
   storage,
-  blacklist: ['filter'],
 };
 
 const persistedReducer = persistReducer(persistConfig, slice);
 
 export const store = configureStore({
-  reducer: { toolkit: persistedReducer },
+  reducer: { toolkit: persistedReducer, filter: filterSlice },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

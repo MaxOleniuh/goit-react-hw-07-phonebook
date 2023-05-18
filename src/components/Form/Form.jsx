@@ -7,15 +7,20 @@ import {
   InputStyled,
 } from './Form.styled';
 import { useState } from 'react';
-const Form = ({ addUser }) => {
-   const [name, setName] = useState('');
+import { addContact } from 'redux/operations';
+import { useDispatch } from 'react-redux';
+
+const Form = () => {
+
+  const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const id = nanoid();
+  const dispatch = useDispatch();
 
-const handleSubmit = e => {
+  const handleSubmit = e => {
   e.preventDefault();
   const form = e.currentTarget;
-  addUser({ name, number });
+  dispatch(addContact({name, phone: number}));
   form.reset();
   }
 
@@ -55,7 +60,7 @@ const handleSubmit = e => {
     );
   }
 
-  Form.propTypes = {
-  addUser: PropTypes.func.isRequired,
-};
+//   Form.propTypes = {
+//   addUser: PropTypes.func.isRequired,
+// };
 export default Form;

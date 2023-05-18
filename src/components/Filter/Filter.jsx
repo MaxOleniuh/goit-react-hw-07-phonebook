@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { LabelStyled, InputStyled } from './Filter.styled';
-import { changeFilter } from 'redux/slice';
+import { changeFilter } from 'redux/filterSlice';
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.toolkit.filter)
+  const filter = useSelector(state => state.filter)
+  console.log('filter:', filter)
   
   return (
     <LabelStyled>
       Find contacts by name
       <InputStyled
-        onChange={(e) => dispatch(changeFilter(e.currentTarget.value))}
+        onChange={e => dispatch(changeFilter(e.currentTarget.value))}
         type="text"
         value={filter}
       />

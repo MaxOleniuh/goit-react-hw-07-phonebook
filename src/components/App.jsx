@@ -1,26 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
+import { getContacts } from 'redux/selectors';
+import { useEffect } from 'react';
+import { fetchContacts } from 'redux/operations';
+import Loader from './Loader/Loader';
 import Form from './Form/Form';
 import List from './List/List';
 import Filter from './Filter/Filter';
-import { create } from 'redux/slice';
-// import Loader from './Loader/Loader';
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.toolkit.contacts);
-  const filter = useSelector(state => state.toolkit.filter);
+  const filter = useSelector(state => state.filter);
 
-  const addUser = data => {
-    const newContact = {
-      ...data,
-      id: nanoid(),
-    };
-    if (contacts.filter(contact => contact.name === data.name).length) {
-      alert(data.name + ' is already in contacts!');
-    } else dispatch(create(newContact));
-  };
+  const {items, isLoading, error} = useSelector(getContacts);
+    useEffect(() => {
+      dispatch(fetchContacts());
+  }, [dispatch]);
 
-  const filteredContacts = () => contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+  const filteredContacts = () => items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+  console.log(items)
 
   const setFilterValue = data => {
     dispatch(filter(data));
@@ -28,9 +24,11 @@ export const App = () => {
 
     return (
       <>
-        {/* <Loader/> */}
+        {/* <p>{ JSON.stringify(items, null, 2)}</p> */}
+        {isLoading && <Loader />}
+        {error && <p>{error}</p>}
         <h2>Phonebook</h2>
-        <Form addUser={addUser} />
+        <Form  />
         <h3>Contacts</h3>
         <Filter setFilterValue={setFilterValue} />
         <List contacts={filteredContacts()} />
