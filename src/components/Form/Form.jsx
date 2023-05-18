@@ -18,7 +18,8 @@ const Form = () => {
     e.preventDefault();
     const form = e.currentTarget;
     dispatch(addContact({ name, phone: number }));
-    form.reset();
+        form.reset();
+
   };
 
   const handleChange = ({ target: { name, value } }) => {

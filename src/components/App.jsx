@@ -16,9 +16,7 @@ export const App = () => {
 
   const filteredContacts = () => items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
 
-  const setFilterValue = data => {
-    dispatch(filter(data));
-  }
+
 
     return (
       <>
@@ -26,7 +24,7 @@ export const App = () => {
         <h2>Phonebook</h2>
         <Form />
         <h3>Contacts</h3>
-        <Filter setFilterValue={setFilterValue} />
+        <Filter />
         <List contacts={filteredContacts()} />
       </>
     );
