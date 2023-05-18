@@ -8,22 +8,16 @@ import {
 import { useState } from 'react';
 import { addContact } from 'redux/operations';
 import { useDispatch } from 'react-redux';
-
 const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [prevName, setPrevName] = useState('');
   const id = nanoid();
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const isNameExists = prevName === name;
-    if (!isNameExists) {
-      dispatch(addContact({ name, phone: number })); 
-    }
-    alert('This contact is already in your phonebook!')
+    dispatch(addContact({ name, phone: number }));
     form.reset();
   };
 

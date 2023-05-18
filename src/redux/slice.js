@@ -20,7 +20,8 @@ const slice = createSlice({
       state.contacts.isLoading = true;
     },
     [addContact.fulfilled](state, { payload }) {
-      state.contacts.items.push(payload);
+      if (state.contacts.items.name !== payload.name)
+        state.contacts.items.push(payload);
     },
     [deleteContact.fulfilled](state, { payload }) {
       state.contacts.items = state.contacts.items.filter(
