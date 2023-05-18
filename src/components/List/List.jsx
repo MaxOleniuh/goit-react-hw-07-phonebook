@@ -6,7 +6,7 @@ const List = ({contacts}) => {
   const dispatch = useDispatch();
   return (
     <UlStyled>
-      {contacts.map(({ id, phone, name }) => (
+       {contacts.map(({ id, phone, name }) => (
         <LiStyled key={id}>
           {name}: {phone}
           <ButtonStyled onClick={() => dispatch(deleteContact(id))}>Delete</ButtonStyled>

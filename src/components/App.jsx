@@ -9,14 +9,12 @@ import Filter from './Filter/Filter';
 export const App = () => {
   const dispatch = useDispatch();
   const filter = useSelector(state => state.filter);
-
-  const {items, isLoading, error} = useSelector(getContacts);
-    useEffect(() => {
+  const {items, isLoading } = useSelector(getContacts);
+  useEffect(() => {
       dispatch(fetchContacts());
   }, [dispatch]);
 
   const filteredContacts = () => items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
-  console.log(items)
 
   const setFilterValue = data => {
     dispatch(filter(data));
@@ -24,9 +22,7 @@ export const App = () => {
 
     return (
       <>
-        {/* <p>{ JSON.stringify(items, null, 2)}</p> */}
         {isLoading && <Loader />}
-        {error && <p>{error}</p>}
         <h2>Phonebook</h2>
         <Form  />
         <h3>Contacts</h3>

@@ -4,7 +4,6 @@ import { changeFilter } from 'redux/filterSlice';
 const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(state => state.filter)
-  console.log('filter:', filter)
   
   return (
     <LabelStyled>
