@@ -17,13 +17,13 @@ const Form = () => {
   const { items } = useSelector(getContacts);
   const handleSubmit = (e) => {
     e.preventDefault();
+    const inputValue = e.target.name.value;
     const form = e.currentTarget;
-    if (items) {
-      dispatch(addContact({ name, phone: number }));
+    if (items.some(el => el.name.toLowerCase() === inputValue.toLowerCase())) {
+      alert(`${name} is already in your phonebook`);
+      return;
     }
-    else {
-      alert('This contact is already in your phonebook')
-    }
+     dispatch(addContact({ name, phone: number }));
     form.reset();
   };
 
