@@ -4,6 +4,8 @@ export const UlStyled = s.ul `
     display: flex;
     flex-direction: column;
     gap: 15px;
+    padding: 0;
+    margin: 0;
 `
 export const ButtonStyled = s.button `
     width: 80px;
@@ -24,4 +26,10 @@ export const LiStyled = s.li `
     gap: 10px;
     align-items: center;
     width: 100%;
+    padding: 10px 5px;
+    background-color: #212020;
+    border-radius: 4px;
+    &:hover {
+      background-color: #3b3b3b;
+    }
 `

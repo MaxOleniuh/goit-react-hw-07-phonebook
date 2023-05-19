@@ -8,6 +8,6 @@ export const LabelStyled = s.label `
 export const InputStyled = s.input `
     width: 200px;
     padding: 5px;
-    margin-block: 25px;
+    margin-block: 15px;
     border-color: #6d6d6d34;
 `
