@@ -18,8 +18,7 @@ const Form = () => {
     e.preventDefault();
     const form = e.currentTarget;
     dispatch(addContact({ name, phone: number }));
-        form.reset();
-
+    form.reset();
   };
 
   const handleChange = ({ target: { name, value } }) => {
@@ -30,6 +29,7 @@ const Form = () => {
     }
   };
   return (
+    <>
     <FormStyled onSubmit={handleSubmit}>
       <LabelStyled htmlFor={id}>
         <span>Name</span>
@@ -55,6 +55,8 @@ const Form = () => {
       </LabelStyled>
       <ButtonStyled type="submit">Add contact</ButtonStyled>
     </FormStyled>
+    </>
+    
   );
 };
 export default Form;

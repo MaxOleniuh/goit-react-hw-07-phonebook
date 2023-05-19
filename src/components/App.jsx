@@ -6,18 +6,17 @@ import Loader from './Loader/Loader';
 import Form from './Form/Form';
 import List from './List/List';
 import Filter from './Filter/Filter';
+
 export const App = () => {
   const dispatch = useDispatch();
   const filter = useSelector(state => state.filter);
-  const {items, isLoading } = useSelector(getContacts);
+  const { items, isLoading } = useSelector(getContacts);
+  
   useEffect(() => {
       dispatch(fetchContacts());
   }, [dispatch]);
 
   const filteredContacts = () => items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
-
-
-
     return (
       <>
         {isLoading && <Loader />}
