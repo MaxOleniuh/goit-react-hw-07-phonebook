@@ -21,9 +21,10 @@ const Form = () => {
     const form = e.currentTarget;
     if (items.some(el => el.name.toLowerCase() === inputValue.toLowerCase())) {
       alert(`${name} is already in your phonebook`);
-      return;
     }
-     dispatch(addContact({ name, phone: number }));
+    else {
+      dispatch(addContact({ name, phone: number }));    
+    }
     form.reset();
   };
 

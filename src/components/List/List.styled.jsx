@@ -6,8 +6,8 @@ export const UlStyled = s.ul `
     gap: 15px;
 `
 export const ButtonStyled = s.button `
-    width: 60px;
-    height: 30px;
+    width: 80px;
+    height: 35px;
   background-color: #ba0000;
   border-radius: 6px;
   border-width: 0;
@@ -22,5 +22,6 @@ export const ButtonStyled = s.button `
 export const LiStyled = s.li `
     display: flex;
     gap: 10px;
-    align-items: center;    
+    align-items: center;
+    width: 100%;
 `
