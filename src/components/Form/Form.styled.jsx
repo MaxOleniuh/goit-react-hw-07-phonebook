@@ -4,7 +4,6 @@ export const FormStyled = s.form `
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin: 30px;
     width: 600px;
 `
 export const ButtonStyled = s.button `
