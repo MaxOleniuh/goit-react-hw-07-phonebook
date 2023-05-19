@@ -7,17 +7,23 @@ import {
 } from './Form.styled';
 import { useState } from 'react';
 import { addContact } from 'redux/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
 const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const id = nanoid();
   const dispatch = useDispatch();
-
+  const { items } = useSelector(getContacts);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    dispatch(addContact({ name, phone: number }));
+    if (items) {
+      dispatch(addContact({ name, phone: number }));
+    }
+    else {
+      alert('This contact is already in your phonebook')
+    }
     form.reset();
   };
 

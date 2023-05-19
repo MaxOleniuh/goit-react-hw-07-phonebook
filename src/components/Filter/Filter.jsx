@@ -7,7 +7,7 @@ const Filter = () => {
   
   return (
     <LabelStyled>
-      Find contacts by name
+      Find contacts by name:
       <InputStyled
         onChange={e => dispatch(changeFilter(e.currentTarget.value))}
         type="text"

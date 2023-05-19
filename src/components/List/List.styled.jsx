@@ -22,5 +22,5 @@ export const ButtonStyled = s.button `
 export const LiStyled = s.li `
     display: flex;
     gap: 10px;
-    align-items: center;
+    align-items: center;    
 `

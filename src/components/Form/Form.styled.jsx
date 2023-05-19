@@ -5,10 +5,11 @@ export const FormStyled = s.form `
     flex-direction: column;
     gap: 20px;
     margin: 30px;
+    width: 900px;
 `
 export const ButtonStyled = s.button `
     width: 150px;
-    height: 30px;
+    height: 40px;
   background-color: #405cf5;
   border-radius: 6px;
   border-width: 0;
@@ -27,7 +28,7 @@ export const LabelStyled = s.label `
     gap: 5px;
 `
 export const InputStyled = s.input `
-    width: 200px;
+    width: 100%;
     padding: 5px;
     margin-block: 5px;
     border-color: #6d6d6d34;
